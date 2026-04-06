@@ -75,10 +75,10 @@
 
   <script>
     let products = [];
-    let isAscending = true;
+    let isAscending = false;
 
 
-    document.addEventListener("DOMContentLoaded", function() {
+    function loadProducts() {
       const xhr = new XMLHttpRequest();
       xhr.onreadystatechange = function() {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -88,7 +88,13 @@
       };
       xhr.open('GET', 'products.json');
       xhr.send();
-    });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', loadProducts);
+    } else {
+      loadProducts();
+    }
 
     function renderTable() {
       const tbody = document.querySelector('#product-table tbody');
