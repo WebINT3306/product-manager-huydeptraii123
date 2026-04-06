@@ -98,10 +98,10 @@
         const tr = document.createElement('tr');
         
         tr.innerHTML = `
-          <td>${index}</td>
+          <td>${product.id}</td>
           <td>${product.name}</td>
-          <td>${product.category || ''}</td>
-          <td>${product.price} đ</td>
+          <td>${product.category}</td>
+          <td>${product.price.toLocaleString('vi-VN')} đ</td>
           <td>${product.quantity}</td>
         `;
         
